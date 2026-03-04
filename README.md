@@ -9,9 +9,6 @@ mais le score continue d'augmenter à l'infini.
 lui tirant dessus et en utilisant des bonus et des capacités. Il est donc crucial d'améliorer les armes et les capacités du joueur pour
 passer à de nouvelles cartes et combattre des boss plus difficiles au fur et à mesure que les cartes avancent.
 
-- Fonctionnalité « Sauvegarder et quitter » pour pouvoir quitter le jeu en cours et revenir avec un compte à rebours de 10 secondes
-pour être prêt à reprendre l'action !
-
 - Lorsque le joueur perd, au lieu d'utiliser des clés ou des diamants pour revenir dans le jeu, nous lui posons
 une question écologique éducative à choix multiples, et s'il répond correctement, il aura une autre chance
 de vaincre toutes les bêtes trash.
