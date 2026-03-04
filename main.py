@@ -19,13 +19,39 @@ BLUE = (50, 150, 255)
 BLACK = (0, 0, 0)
 
 
+# --- FONCTIONS DE DESSIN DE SPRITES ---
+# Ces fonctions créent des images simples direktement en code
+def create_player_sprite():
+    surface = pygame.Surface((30, 30), pygame.SRCALPHA)
+    # Tête (Cercle vert)
+    pygame.draw.circle(surface, GREEN, (15, 15), 15)
+    # Yeux (Cercles noirs)
+    pygame.draw.circle(surface, BLACK, (10, 10), 3)
+    pygame.draw.circle(surface, BLACK, (20, 10), 3)
+    # Bouche (Petit arc)
+    pygame.draw.arc(surface, BLACK, (10, 15, 10, 10), 3.14, 0, 2)
+    return surface
+
+
+def create_trash_sprite():
+    surface = pygame.Surface((20, 20), pygame.SRCALPHA)
+    # Partie rouge du trognon (Losange)
+    pygame.draw.polygon(surface, RED, [(10, 0), (20, 10), (10, 20), (0, 10)])
+    # Partie blanche centrale
+    pygame.draw.rect(surface, WHITE, (5, 5, 10, 10), 2)
+    # Pépins (Petits points noirs)
+    pygame.draw.circle(surface, BLACK, (10, 10), 1)
+    return surface
+
+
 # --- CLASSES ---
 class Player:
     def __init__(self):
         self.rect = pygame.Rect(WIDTH // 2, HEIGHT // 2, 30, 30)
+        self.sprite = create_player_sprite()
         self.velocity_y = 0
         self.gravity = 0.5
-        self.jump_force = -13  # Le joueur saute plus haut
+        self.jump_force = -13
         self.hp = 3
         self.max_hp = 3
         self.score = 0
@@ -40,7 +66,6 @@ class Player:
 
 class Platform:
     def __init__(self):
-        # Les plateformes sont plus rapprochées pour être sûr de pouvoir monter
         self.rect = pygame.Rect(random.randint(0, WIDTH - 80), -10, random.randint(60, 100), 15)
         self.is_eco = random.choice([True, False, False])
 
@@ -48,6 +73,7 @@ class Platform:
 class Trash:
     def __init__(self):
         self.rect = pygame.Rect(random.randint(0, WIDTH - 20), -50, 20, 20)
+        self.sprite = create_trash_sprite()
         self.speed = random.randint(3, 6)
 
     def update(self):
@@ -74,8 +100,11 @@ trivia_answer = pygame.K_b
 # --- FONCTIONS DE SAUVEGARDE ---
 def save_game():
     data = {"score": player.score, "hp": player.hp, "max_hp": player.max_hp}
-    with open("savegame.json", "w") as f:
-        json.dump(data, f)
+    try:
+        with open("savegame.json", "w") as f:
+            json.dump(data, f)
+    except Exception:
+        pass  # Ignorer les erreurs de sauvegarde
 
 
 # --- BOUCLE PRINCIPALE ---
@@ -91,9 +120,11 @@ while running:
             running = False
 
     if state == "PLAYING":
+        # CONTRÔLES : Flèches ET ZQSD
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]: player.rect.x -= 5
-        if keys[pygame.K_RIGHT]: player.rect.x += 5
+        if keys[pygame.K_LEFT] or keys[pygame.K_q]: player.rect.x -= 5
+        if keys[pygame.K_RIGHT] or keys[pygame.K_d]: player.rect.x += 5
+        # (Z pour sauter si un jour on ajoute le saut manuel)
         if keys[pygame.K_ESCAPE]:
             save_game()
             running = False
@@ -144,12 +175,13 @@ while running:
         if player.score >= next_boss_score:
             state = "BOSS"
 
-        pygame.draw.rect(screen, GREEN, player.rect)
+        # DESSINER : Le bonhomme et les trognons de pomme
+        screen.blit(player.sprite, player.rect)
         for p in platforms:
             color = GREEN if p.is_eco else GRAY
             pygame.draw.rect(screen, color, p.rect)
         for t in trashes:
-            pygame.draw.rect(screen, RED, t.rect)
+            screen.blit(t.sprite, t.rect)
 
         score_txt = font.render(f"Score: {int(player.score)} | HP: {player.hp}", True, BLACK)
         screen.blit(score_txt, (10, 10))
@@ -174,7 +206,7 @@ while running:
                     state = "GAME_OVER"
 
     elif state == "COUNTDOWN":
-        remaining = 3 - int(time.time() - countdown_start)  # Chrono à 3 secondes
+        remaining = 3 - int(time.time() - countdown_start)
         if remaining <= 0:
             state = "PLAYING"
         else:
