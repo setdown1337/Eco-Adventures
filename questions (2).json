@@ -1,0 +1,102 @@
+[
+  {
+    "question": "Quel gaz est principalement responsable de l'effet de serre ?",
+    "choices": [
+      "Oxygène (O2)",
+      "Dioxyde de carbone (CO2)",
+      "Azote (N2)",
+      "Hélium (He)"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Combien de temps met une bouteille en plastique pour se décomposer ?",
+    "choices": [
+      "10 ans",
+      "50 ans",
+      "100 ans",
+      "400 ans"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Quelle énergie est considérée comme renouvelable ?",
+    "choices": [
+      "Charbon",
+      "Pétrole",
+      "Énergie solaire",
+      "Gaz naturel"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Quel est le principal déchet retrouvé dans les océans ?",
+    "choices": [
+      "Verre",
+      "Métal",
+      "Plastique",
+      "Papier"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Qu'est-ce que le 'compostage' ?",
+    "choices": [
+      "Brûler les déchets organiques",
+      "Enfouir les déchets en pleine terre",
+      "Recycler les déchets organiques en engrais naturel",
+      "Trier les plastiques"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Quel geste réduit le plus les émissions de CO2 au quotidien ?",
+    "choices": [
+      "Utiliser des sacs réutilisables",
+      "Prendre les transports en commun plutôt que la voiture",
+      "Éteindre la lumière en partant",
+      "Acheter bio"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Le réchauffement climatique fait fondre les glaces polaires. Quelle conséquence directe cela a-t-il ?",
+    "choices": [
+      "Baisse du niveau des mers",
+      "Augmentation du niveau des mers",
+      "Refroidissement des océans",
+      "Aucun impact"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Quelle fraction des espèces animales risquent l'extinction à cause de la déforestation ?",
+    "choices": [
+      "1 sur 100",
+      "1 sur 10",
+      "Plus de 50 %",
+      "Aucune espèce"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "L'énergie éolienne est produite grâce à :",
+    "choices": [
+      "La chaleur du soleil",
+      "La force du vent",
+      "La pression de l'eau",
+      "La combustion du bois"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "Que signifie le sigle 'COP' dans les accords climatiques internationaux ?",
+    "choices": [
+      "Conférence des Organisations de Protection",
+      "Conférence des Parties",
+      "Comité d'Observation du Pétrole",
+      "Centre d'Opérations Planétaires"
+    ],
+    "answer": 1
+  }
+]
