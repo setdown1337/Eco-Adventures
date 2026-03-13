@@ -12,4 +12,5 @@ passer à de nouvelles cartes et combattre des boss plus difficiles au fur et à
 une question écologique éducative à choix multiples, et s'il répond correctement, il aura une autre chance
 de vaincre toutes les bêtes trash.
 
-Traduit avec DeepL.com (version gratuite)
+
+
