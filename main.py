@@ -14,7 +14,7 @@ import time
 pygame.init()
 pygame.mixer.init()
 
-WIDTH, HEIGHT = 500, 750
+WIDTH,  HEIGHT = 500, 750
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Eco Adventures")
 clock = pygame.time.Clock()
